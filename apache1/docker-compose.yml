@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+    apache:
+      build: ./apache
+      ports:
+        - 8888:80
+        - 443:443
+      volumes:
+        - ./html:/var/www/html
+        - ./html2:/var/www/meusitio.lan
+        - ./html3:/var/www/outrositio.lan
+        - ./outrolugar:/var/www/outrolugar
+        # - ./html2:/web
+        - ./apache/meusitio.lan.conf:/etc/apache2/sites-enabled/111-meusitio.lan.conf
+        - ./apache/outrositio.lan.conf:/etc/apache2/sites-enabled/222-outrositio.lan.conf
+        - ./apache/outrositio.lan.ssl.conf:/etc/apache2/sites-enabled/222-outrositio.lan.ssl.conf
+        - ./apache/outrositio.key:/etc/ssl/private/outrositio.key
+        - ./apache/outrositio.pem:/etc/ssl/certs/outrositio.pem
